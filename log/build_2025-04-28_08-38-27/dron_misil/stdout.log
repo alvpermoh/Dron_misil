@@ -1,0 +1,21 @@
+running egg_info
+writing build/dron_misil/dron_misil.egg-info/PKG-INFO
+writing dependency_links to build/dron_misil/dron_misil.egg-info/dependency_links.txt
+writing entry points to build/dron_misil/dron_misil.egg-info/entry_points.txt
+writing requirements to build/dron_misil/dron_misil.egg-info/requires.txt
+writing top-level names to build/dron_misil/dron_misil.egg-info/top_level.txt
+reading manifest file 'build/dron_misil/dron_misil.egg-info/SOURCES.txt'
+writing manifest file 'build/dron_misil/dron_misil.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+running install_egg_info
+removing '/home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil-0.0.0-py3.10.egg-info' (and everything under it)
+Copying build/dron_misil/dron_misil.egg-info to /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil-0.0.0-py3.10.egg-info
+running install_scripts
+Installing entorno script to /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/dron_misil
+Installing modelo_dron script to /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/dron_misil
+Installing modelo_misil script to /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/dron_misil
+writing list of installed files to '/home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/install.log'

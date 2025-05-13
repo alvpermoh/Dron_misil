@@ -1,0 +1,47 @@
+[0.548s] Invoking command in '/home/student/AdR/mi_ws/src/dron_misil': PYTHONPATH=/home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/dron_misil build --build-base /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build install --record /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/install.log --single-version-externally-managed install_data
+[0.744s] running egg_info
+[0.744s] creating build/dron_misil/dron_misil.egg-info
+[0.744s] writing build/dron_misil/dron_misil.egg-info/PKG-INFO
+[0.745s] writing dependency_links to build/dron_misil/dron_misil.egg-info/dependency_links.txt
+[0.745s] writing entry points to build/dron_misil/dron_misil.egg-info/entry_points.txt
+[0.745s] writing requirements to build/dron_misil/dron_misil.egg-info/requires.txt
+[0.745s] writing top-level names to build/dron_misil/dron_misil.egg-info/top_level.txt
+[0.745s] writing manifest file 'build/dron_misil/dron_misil.egg-info/SOURCES.txt'
+[0.747s] reading manifest file 'build/dron_misil/dron_misil.egg-info/SOURCES.txt'
+[0.748s] writing manifest file 'build/dron_misil/dron_misil.egg-info/SOURCES.txt'
+[0.748s] running build
+[0.748s] running build_py
+[0.748s] creating /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build
+[0.748s] creating /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib
+[0.749s] creating /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil
+[0.749s] copying dron_misil/simulacion_dron_misil.py -> /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil
+[0.749s] copying dron_misil/modelo_dron.py -> /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil
+[0.749s] copying dron_misil/modelo_misil.py -> /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil
+[0.749s] copying dron_misil/__init__.py -> /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil
+[0.750s] copying dron_misil/entorno.py -> /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil
+[0.750s] running install
+[0.751s] running install_lib
+[0.751s] creating /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil
+[0.752s] copying /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil/simulacion_dron_misil.py -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil
+[0.752s] copying /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil/modelo_dron.py -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil
+[0.752s] copying /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil/modelo_misil.py -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil
+[0.752s] copying /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil/__init__.py -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil
+[0.752s] copying /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil/entorno.py -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil
+[0.752s] byte-compiling /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil/simulacion_dron_misil.py to simulacion_dron_misil.cpython-310.pyc
+[0.753s] byte-compiling /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil/modelo_dron.py to modelo_dron.cpython-310.pyc
+[0.754s] byte-compiling /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil/modelo_misil.py to modelo_misil.cpython-310.pyc
+[0.754s] byte-compiling /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil/__init__.py to __init__.cpython-310.pyc
+[0.754s] byte-compiling /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil/entorno.py to entorno.cpython-310.pyc
+[0.756s] running install_data
+[0.756s] creating /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/share/ament_index/resource_index/packagetype
+[0.756s] copying resource/dron_misil -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/share/ament_index/resource_index/packagetype
+[0.756s] creating /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/share/dron_misil/launch
+[0.756s] copying launch/dron_misil_launch.py -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/share/dron_misil/launch
+[0.757s] running install_egg_info
+[0.758s] Copying build/dron_misil/dron_misil.egg-info to /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil-0.0.0-py3.10.egg-info
+[0.759s] running install_scripts
+[0.778s] Installing entorno script to /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/dron_misil
+[0.779s] Installing modelo_dron script to /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/dron_misil
+[0.779s] Installing modelo_misil script to /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/dron_misil
+[0.779s] writing list of installed files to '/home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/install.log'
+[0.798s] Invoked command in '/home/student/AdR/mi_ws/src/dron_misil' returned '0': PYTHONPATH=/home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/dron_misil build --build-base /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build install --record /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/install.log --single-version-externally-managed install_data

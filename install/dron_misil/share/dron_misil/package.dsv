@@ -1,0 +1,6 @@
+source;share/dron_misil/hook/pythonpath.ps1
+source;share/dron_misil/hook/pythonpath.dsv
+source;share/dron_misil/hook/pythonpath.sh
+source;share/dron_misil/hook/ament_prefix_path.ps1
+source;share/dron_misil/hook/ament_prefix_path.dsv
+source;share/dron_misil/hook/ament_prefix_path.sh

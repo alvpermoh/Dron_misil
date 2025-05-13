@@ -1,0 +1,8 @@
+running egg_info
+creating build/dron_misil/drone_misil.egg-info
+writing build/dron_misil/drone_misil.egg-info/PKG-INFO
+writing dependency_links to build/dron_misil/drone_misil.egg-info/dependency_links.txt
+writing entry points to build/dron_misil/drone_misil.egg-info/entry_points.txt
+writing requirements to build/dron_misil/drone_misil.egg-info/requires.txt
+writing top-level names to build/dron_misil/drone_misil.egg-info/top_level.txt
+writing manifest file 'build/dron_misil/drone_misil.egg-info/SOURCES.txt'

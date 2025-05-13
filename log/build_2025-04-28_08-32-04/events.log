@@ -1,0 +1,60 @@
+[0.000000] (-) TimerEvent: {}
+[0.000163] (dron_misil) JobQueued: {'identifier': 'dron_misil', 'dependencies': OrderedDict()}
+[0.000190] (dron_misil) JobStarted: {'identifier': 'dron_misil'}
+[0.099059] (-) TimerEvent: {}
+[0.199475] (-) TimerEvent: {}
+[0.299920] (-) TimerEvent: {}
+[0.400405] (-) TimerEvent: {}
+[0.500969] (-) TimerEvent: {}
+[0.543701] (dron_misil) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', 'build/dron_misil', 'build', '--build-base', '/home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build', 'install', '--record', '/home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/student/AdR/mi_ws/src/dron_misil', 'env': {'HOSTNAME': 'docker-desktop', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'ZSH_THEME': 'agnoster', 'HOME': '/home/student', 'OLDPWD': '/home/student/AdR/mi_ws/src', 'ZSH': '/home/student/.oh-my-zsh', 'LSCOLORS': 'Gxfxcxdxbxegedabagacad', 'PAGER': 'more', 'ROS_PYTHON_VERSION': '3', 'ROS_DISTRO': 'humble', 'COLCON_PREFIX_PATH': '/home/student/AdR/mi_ws/src/dron_misil/install:/home/student/AdR/mi_ws/install', 'LOGNAME': 'student', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'USER_PASSWORD': 'student', 'DISPLAY': ':0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'DEBIAN_FRONTEND': 'noninteractive', 'AMENT_PREFIX_PATH': '/home/student/AdR/mi_ws/install/p2_kf_adr:/home/student/AdR/mi_ws/install/p1_adr_APM:/opt/ros/humble', 'LC_ALL': 'C.UTF-8', 'CONTAINER_IMAGE_VER': 'v1.0.0', 'PWD': '/home/student/AdR/mi_ws/src/dron_misil/build/dron_misil', 'USER_NAME': 'student', 'PYTHONPATH': '/home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages:/home/student/AdR/mi_ws/install/p2_kf_adr/lib/python3.10/site-packages:/home/student/AdR/mi_ws/install/p1_adr_APM/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[0.601159] (-) TimerEvent: {}
+[0.701672] (-) TimerEvent: {}
+[0.743817] (dron_misil) StdoutLine: {'line': b'running egg_info\n'}
+[0.744220] (dron_misil) StdoutLine: {'line': b'creating build/dron_misil/dron_misil.egg-info\n'}
+[0.744493] (dron_misil) StdoutLine: {'line': b'writing build/dron_misil/dron_misil.egg-info/PKG-INFO\n'}
+[0.744824] (dron_misil) StdoutLine: {'line': b'writing dependency_links to build/dron_misil/dron_misil.egg-info/dependency_links.txt\n'}
+[0.744963] (dron_misil) StdoutLine: {'line': b'writing entry points to build/dron_misil/dron_misil.egg-info/entry_points.txt\n'}
+[0.745243] (dron_misil) StdoutLine: {'line': b'writing requirements to build/dron_misil/dron_misil.egg-info/requires.txt\n'}
+[0.745345] (dron_misil) StdoutLine: {'line': b'writing top-level names to build/dron_misil/dron_misil.egg-info/top_level.txt\n'}
+[0.745402] (dron_misil) StdoutLine: {'line': b"writing manifest file 'build/dron_misil/dron_misil.egg-info/SOURCES.txt'\n"}
+[0.747034] (dron_misil) StdoutLine: {'line': b"reading manifest file 'build/dron_misil/dron_misil.egg-info/SOURCES.txt'\n"}
+[0.747748] (dron_misil) StdoutLine: {'line': b"writing manifest file 'build/dron_misil/dron_misil.egg-info/SOURCES.txt'\n"}
+[0.748041] (dron_misil) StdoutLine: {'line': b'running build\n'}
+[0.748141] (dron_misil) StdoutLine: {'line': b'running build_py\n'}
+[0.748271] (dron_misil) StdoutLine: {'line': b'creating /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build\n'}
+[0.748618] (dron_misil) StdoutLine: {'line': b'creating /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib\n'}
+[0.748731] (dron_misil) StdoutLine: {'line': b'creating /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil\n'}
+[0.748794] (dron_misil) StdoutLine: {'line': b'copying dron_misil/simulacion_dron_misil.py -> /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil\n'}
+[0.748854] (dron_misil) StdoutLine: {'line': b'copying dron_misil/modelo_dron.py -> /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil\n'}
+[0.749084] (dron_misil) StdoutLine: {'line': b'copying dron_misil/modelo_misil.py -> /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil\n'}
+[0.749492] (dron_misil) StdoutLine: {'line': b'copying dron_misil/__init__.py -> /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil\n'}
+[0.749685] (dron_misil) StdoutLine: {'line': b'copying dron_misil/entorno.py -> /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil\n'}
+[0.750225] (dron_misil) StdoutLine: {'line': b'running install\n'}
+[0.750629] (dron_misil) StdoutLine: {'line': b'running install_lib\n'}
+[0.751575] (dron_misil) StdoutLine: {'line': b'creating /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil\n'}
+[0.751765] (dron_misil) StdoutLine: {'line': b'copying /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil/simulacion_dron_misil.py -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil\n'}
+[0.751838] (dron_misil) StdoutLine: {'line': b'copying /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil/modelo_dron.py -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil\n'}
+[0.752056] (dron_misil) StdoutLine: {'line': b'copying /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil/modelo_misil.py -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil\n'}
+[0.752121] (dron_misil) StdoutLine: {'line': b'copying /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil/__init__.py -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil\n'}
+[0.752175] (dron_misil) StdoutLine: {'line': b'copying /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil/entorno.py -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil\n'}
+[0.752619] (dron_misil) StdoutLine: {'line': b'byte-compiling /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil/simulacion_dron_misil.py to simulacion_dron_misil.cpython-310.pyc\n'}
+[0.752945] (dron_misil) StdoutLine: {'line': b'byte-compiling /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil/modelo_dron.py to modelo_dron.cpython-310.pyc\n'}
+[0.753766] (dron_misil) StdoutLine: {'line': b'byte-compiling /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil/modelo_misil.py to modelo_misil.cpython-310.pyc\n'}
+[0.754407] (dron_misil) StdoutLine: {'line': b'byte-compiling /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil/__init__.py to __init__.cpython-310.pyc\n'}
+[0.754619] (dron_misil) StdoutLine: {'line': b'byte-compiling /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil/entorno.py to entorno.cpython-310.pyc\n'}
+[0.755959] (dron_misil) StdoutLine: {'line': b'running install_data\n'}
+[0.756026] (dron_misil) StdoutLine: {'line': b'creating /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/share/ament_index/resource_index/packagetype\n'}
+[0.756168] (dron_misil) StdoutLine: {'line': b'copying resource/dron_misil -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/share/ament_index/resource_index/packagetype\n'}
+[0.756341] (dron_misil) StdoutLine: {'line': b'creating /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/share/dron_misil/launch\n'}
+[0.756493] (dron_misil) StdoutLine: {'line': b'copying launch/dron_misil_launch.py -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/share/dron_misil/launch\n'}
+[0.756913] (dron_misil) StdoutLine: {'line': b'running install_egg_info\n'}
+[0.758575] (dron_misil) StdoutLine: {'line': b'Copying build/dron_misil/dron_misil.egg-info to /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil-0.0.0-py3.10.egg-info\n'}
+[0.759375] (dron_misil) StdoutLine: {'line': b'running install_scripts\n'}
+[0.778600] (dron_misil) StdoutLine: {'line': b'Installing entorno script to /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/dron_misil\n'}
+[0.778827] (dron_misil) StdoutLine: {'line': b'Installing modelo_dron script to /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/dron_misil\n'}
+[0.778888] (dron_misil) StdoutLine: {'line': b'Installing modelo_misil script to /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/dron_misil\n'}
+[0.779263] (dron_misil) StdoutLine: {'line': b"writing list of installed files to '/home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/install.log'\n"}
+[0.797735] (dron_misil) CommandEnded: {'returncode': 0}
+[0.801754] (-) TimerEvent: {}
+[0.820695] (dron_misil) JobEnded: {'identifier': 'dron_misil', 'rc': 0}
+[0.821180] (-) EventReactorShutdown: {}

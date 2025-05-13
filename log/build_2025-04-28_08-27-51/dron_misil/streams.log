@@ -1,0 +1,11 @@
+[0.723s] Invoking command in '/home/student/AdR/mi_ws/src/dron_misil': PYTHONPATH=/home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/dron_misil build --build-base /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build install --record /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/install.log --single-version-externally-managed install_data
+[0.919s] running egg_info
+[0.919s] creating build/dron_misil/drone_misil.egg-info
+[0.919s] writing build/dron_misil/drone_misil.egg-info/PKG-INFO
+[0.920s] writing dependency_links to build/dron_misil/drone_misil.egg-info/dependency_links.txt
+[0.920s] writing entry points to build/dron_misil/drone_misil.egg-info/entry_points.txt
+[0.920s] writing requirements to build/dron_misil/drone_misil.egg-info/requires.txt
+[0.920s] writing top-level names to build/dron_misil/drone_misil.egg-info/top_level.txt
+[0.921s] writing manifest file 'build/dron_misil/drone_misil.egg-info/SOURCES.txt'
+[0.922s] error: package directory 'drone_misil' does not exist
+[0.938s] Invoked command in '/home/student/AdR/mi_ws/src/dron_misil' returned '1': PYTHONPATH=/home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/dron_misil build --build-base /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build install --record /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/install.log --single-version-externally-managed install_data

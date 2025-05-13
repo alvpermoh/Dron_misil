@@ -1,0 +1,45 @@
+running egg_info
+creating build/dron_misil/dron_misil.egg-info
+writing build/dron_misil/dron_misil.egg-info/PKG-INFO
+writing dependency_links to build/dron_misil/dron_misil.egg-info/dependency_links.txt
+writing entry points to build/dron_misil/dron_misil.egg-info/entry_points.txt
+writing requirements to build/dron_misil/dron_misil.egg-info/requires.txt
+writing top-level names to build/dron_misil/dron_misil.egg-info/top_level.txt
+writing manifest file 'build/dron_misil/dron_misil.egg-info/SOURCES.txt'
+reading manifest file 'build/dron_misil/dron_misil.egg-info/SOURCES.txt'
+writing manifest file 'build/dron_misil/dron_misil.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build
+creating /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib
+creating /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil
+copying dron_misil/simulacion_dron_misil.py -> /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil
+copying dron_misil/modelo_dron.py -> /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil
+copying dron_misil/modelo_misil.py -> /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil
+copying dron_misil/__init__.py -> /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil
+copying dron_misil/entorno.py -> /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil
+running install
+running install_lib
+creating /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil
+copying /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil/simulacion_dron_misil.py -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil
+copying /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil/modelo_dron.py -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil
+copying /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil/modelo_misil.py -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil
+copying /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil/__init__.py -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil
+copying /home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/build/lib/dron_misil/entorno.py -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil
+byte-compiling /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil/simulacion_dron_misil.py to simulacion_dron_misil.cpython-310.pyc
+byte-compiling /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil/modelo_dron.py to modelo_dron.cpython-310.pyc
+byte-compiling /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil/modelo_misil.py to modelo_misil.cpython-310.pyc
+byte-compiling /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil/entorno.py to entorno.cpython-310.pyc
+running install_data
+creating /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/share/ament_index/resource_index/packagetype
+copying resource/dron_misil -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/share/ament_index/resource_index/packagetype
+creating /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/share/dron_misil/launch
+copying launch/dron_misil_launch.py -> /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/share/dron_misil/launch
+running install_egg_info
+Copying build/dron_misil/dron_misil.egg-info to /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/python3.10/site-packages/dron_misil-0.0.0-py3.10.egg-info
+running install_scripts
+Installing entorno script to /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/dron_misil
+Installing modelo_dron script to /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/dron_misil
+Installing modelo_misil script to /home/student/AdR/mi_ws/src/dron_misil/install/dron_misil/lib/dron_misil
+writing list of installed files to '/home/student/AdR/mi_ws/src/dron_misil/build/dron_misil/install.log'

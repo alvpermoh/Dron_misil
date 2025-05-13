@@ -1,0 +1,5 @@
+[console_scripts]
+entorno = dron_misil.entorno:main
+modelo_dron = dron_misil.modelo_dron:main
+modelo_misil = dron_misil.modelo_misil:main
+
