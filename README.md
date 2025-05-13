@@ -9,7 +9,7 @@ Este proyecto utiliza Python para crear entornos de simulación visual con `gymn
 Ejecuta el siguiente comando para instalar las dependencias necesarias:
 
 ```bash
-pip install gymnasium vpython numpy
+pip install gymnasium vpython numpy stable-lines3
 ```
 
 ---
