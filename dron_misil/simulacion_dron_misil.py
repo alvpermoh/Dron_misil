@@ -3,7 +3,7 @@ from rclpy.node import Node
 from std_msgs.msg import Float64
 from stable_baselines3 import PPO
 from stable_baselines3.common.callbacks import BaseCallback
-
+import time
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
@@ -74,7 +74,7 @@ def train_model():
 
 
 def simulate_model():
-    env = DroneEvadeSim(render_mode="human")
+    env = DroneEvadeSim(render_mode="prueba")
     model_path = "ppo_dron_evade.zip"
 
     if not os.path.exists(model_path):
@@ -83,7 +83,7 @@ def simulate_model():
 
     model = PPO.load(model_path)
 
-    for _ in range(2):
+    for _ in range(1):
         obs, _ = env.reset()
         pruebas = [0, 0]
 
@@ -94,10 +94,14 @@ def simulate_model():
                 obs, _ = env.reset()
                 pruebas[0] += 1
                 print("Me pilla")
+                time.sleep(0.2)
             if truncated:
                 obs, _ = env.reset()
                 pruebas[1] += 1
                 print("Esquivo")
+                time.sleep(0.2)
+
+
 
             
 

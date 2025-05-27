@@ -3,16 +3,27 @@ import gymnasium as gym
 from gymnasium import spaces
 import numpy as np
 from vpython import *
-
+import pygame
+from pygame.locals import DOUBLEBUF, OPENGL, QUIT, KEYDOWN, K_LEFT, K_RIGHT, K_UP, K_DOWN, K_w, K_s, K_a, K_d, K_q, K_e
 import rclpy
 from geometry_msgs.msg import Vector3
 from std_msgs.msg import Bool
 from rclpy.node import Node
 
+import time
+import os
+import sys
+
+current_dir = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(current_dir)
+
+from renderer3D import Advanced3DRenderer  # Importa el renderer 3D
+
 
 class DroneEvadeSim(gym.Env):
     def __init__(self, render_mode=None):
         super().__init__()
+        self.reset_done = False
         self.dt = 0.1
         self.max_speed = 10  #10
         self.max_steps = 2000  #700
@@ -47,11 +58,20 @@ class DroneEvadeSim(gym.Env):
         self.pos_sub_missile = self.node.create_subscription(Vector3, '/misil/position', self.misil_pos_callback, 10)
         self.dir_sub_missile = self.node.create_subscription(Vector3, '/misil/direction', self.misil_dir_callback, 10)
 
+        if self.render_mode=="prueba":
+            self.renderer = Advanced3DRenderer()
         self.reset(seed=43)
 
+
+
     def dron_pos_callback(self, msg):
-        """Callback para la posición del dron (recibida del misil)"""
+        """Callback para la posición del dron """
         self.dron_pos = np.array([msg.x, msg.y, msg.z])
+        pos_inicial = np.array([150.0, 150.0, 150.0], dtype=np.float32)
+        #self.node.get_logger().info(f"Posicion dron:{self.dron_pos}")
+        if np.allclose(self.dron_pos, pos_inicial, atol=0.01):
+            self.reset_done = True
+            self.node.get_logger().info("Polluelo en posicion inicial, reset_done activado.")
 
     def misil_pos_callback(self, msg):
         """Callback para la posición del misil (recibida del misil)"""
@@ -75,6 +95,18 @@ class DroneEvadeSim(gym.Env):
 
         # Publicar el mensaje
         self.reset_pub.publish(reset_msg)
+
+        
+        timeout = 1  # Tiempo máximo de espera para reset_done
+        start_time = time.time()
+        while not self.reset_done:
+            if time.time() - start_time > timeout:
+                print("Timeout esperando reset_done, saliendo del reset.")
+                break
+            #time.sleep(0.1)
+            rclpy.spin_once(self.node, timeout_sec=0.01)
+            
+        self.reset_done = False  # Reiniciar el estado de reset
 
         return obs, {}
 
@@ -132,6 +164,15 @@ class DroneEvadeSim(gym.Env):
         if self.render_mode == "human":
             self.render()
 
+
+        if self.render_mode=="prueba":
+            events = pygame.event.get() 
+        
+            # Iterar sobre los eventos para el QUIT
+            for event in events:
+                if event.type == QUIT:
+                 running = False
+            self.renderer.render(self.dron_pos, self.misil_pos,self.misil_dir,events)
         return self._get_obs(), reward, terminated, truncated, {}
 
     def render(self):

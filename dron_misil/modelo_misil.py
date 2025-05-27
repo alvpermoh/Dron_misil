@@ -5,11 +5,12 @@ from rclpy.node import Node
 from geometry_msgs.msg import Vector3
 from std_msgs.msg import Bool
 import numpy as np
-
+import time
 class MisilModel(Node):
     def __init__(self):
         super().__init__('misil_model_node')
-
+        self.last_reset_time = 0
+        self.reset_cooldown = 2.0
         self.dt = 0.1  # intervalo de tiempo
         self.max_speed = 10.0  # velocidad máxima
         self.Tam = 300.0  # tamaño del entorno
@@ -17,7 +18,7 @@ class MisilModel(Node):
         self.misil_pos = np.random.uniform(0, self.Tam, size=(3,))
 
         self.missile_speed = 30  # Velocidad del misil (ajustable)
-        self.missile_turn_rate = 0.1  # Tasa de giro del misil (ajustable)
+        self.missile_turn_rate = 0.2  # Tasa de giro del misil (ajustable)
 
         self.missile_dir = np.array([1.0, 0.0, 0.0])  # Dirección inicial (por ejemplo hacia X)
 
@@ -39,8 +40,14 @@ class MisilModel(Node):
 
     def reset_callback(self, msg):
         if msg.data:
-            self.get_logger().info("Reset recibido: reseteando posición y velocidad.")
-            self.misil_pos = np.random.uniform(0, self.Tam, size=(3,))
+            current_time = time.time()
+            if current_time - self.last_reset_time > self.reset_cooldown:
+                self.get_logger().info("Reset recibido: reseteando posición y velocidad.")
+                self.misil_pos = np.random.uniform(0, self.Tam, size=(3,))
+                self.last_reset_time = current_time
+            else:
+                self.get_logger().info("Reset ignorado: esperando cooldown.")
+            
 
     def dron_pos_callback(self, msg):
         self.dron_pos = np.array([msg.x, msg.y, msg.z])

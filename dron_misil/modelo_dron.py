@@ -5,11 +5,13 @@ from rclpy.node import Node
 from geometry_msgs.msg import Vector3
 from std_msgs.msg import Bool
 import numpy as np
+import time
 
 class DroneModel(Node):
     def __init__(self):
         super().__init__('drone_model_node')
-
+        self.last_reset_time = 0
+        self.reset_cooldown = 2.0
         self.dt = 0.1  # intervalo de tiempo
         self.max_speed = 10.0  # velocidad máxima
         self.Tam = 300.0  # tamaño del entorno
@@ -42,11 +44,20 @@ class DroneModel(Node):
         self.acceleration = np.array([msg.x, msg.y, msg.z], dtype=np.float32)
         
 
+         
     def reset_callback(self, msg):
-        if msg.data:  # Si el mensaje de reset es True
-            self.get_logger().info("Reset recibido: reseteando posición y velocidad.")
-            self.position = np.copy(self.initial_position)
-            self.velocity = np.array([0.0, 0.0, 0.0], dtype=np.float32)
+        if msg.data:
+            current_time = time.time()
+            if current_time - self.last_reset_time > self.reset_cooldown:
+                self.get_logger().info("Reset recibido: reseteando posición y velocidad.")
+                self.position = np.copy(self.initial_position)
+                self.velocity = np.array([0.0, 0.0, 0.0], dtype=np.float32)
+                pos_msg = Vector3(x=float(self.position[0]), y=float(self.position[1]), z=float(self.position[2]))
+                self.pos_pub.publish(pos_msg)
+                self.last_reset_time = current_time
+            else:
+                self.get_logger().info("Reset ignorado: esperando cooldown.")
+            
 
     def update_state(self):
         #while rclpy.ok():
