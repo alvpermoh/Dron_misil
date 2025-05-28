@@ -25,8 +25,8 @@ class DroneEvadeSim(gym.Env):
         super().__init__()
         self.reset_done = False
         self.dt = 0.1
-        self.max_speed = 10  #10
-        self.max_steps = 1000  #700
+        self.max_speed = 30  #10
+        self.max_steps = 1200  #700
         self.Tam = 300.0  # 1000
 
         self.render_mode = render_mode
@@ -143,13 +143,15 @@ class DroneEvadeSim(gym.Env):
         self.dron_pos = np.clip(self.dron_pos, 0, self.Tam)
 
         # Limitar la posición del misil para que no se salga de los límites
-        
+        terminated1=False
+        terminated2=False
+        terminated = False
         self.misil_pos = np.clip(self.misil_pos, 0, self.Tam)
 
-        terminated = dist < 5.5  # debería ser 5.5 asumiendo orientación correcta
+        terminated1 = dist < 3.5  # debería ser 5.5 asumiendo orientación correcta
 
         if np.any((self.dron_pos <= 0) | (self.dron_pos >= self.Tam)):
-            terminated = True
+            terminated2 = True
 
         truncated = self.steps >= self.max_steps
 
@@ -161,11 +163,20 @@ class DroneEvadeSim(gym.Env):
             total_sum = T * (T + 1) / 2
             return (t + 1) / total_sum
 
-        reward = survival_reward(self.steps, self.max_steps) if not terminated else -0.5  # reward 1.0
+        reward = survival_reward(self.steps, self.max_steps) 
+        if terminated1 :
+            reward=-0.5 # reward 1.0
+            terminated = True
+
+        if terminated2:
+            terminated = True
+            reward = -1.0
 
         if truncated:
             reward = 0.5  # 0.5
 
+        reward=(1-2*(self.steps/self.max_steps))/self.max_steps
+        
         if np.any((self.misil_pos <= 0) | (self.misil_pos >= self.Tam)):  # si se ha salido de los límites
             truncated = True
             reward = 1.1 - self.steps / self.max_steps
@@ -173,7 +184,7 @@ class DroneEvadeSim(gym.Env):
         if self.render_mode == "human":
             self.render()
 
-
+        
         if self.render_mode=="prueba":
             events = pygame.event.get() 
         

@@ -12,12 +12,12 @@ class MisilModel(Node):
         self.last_reset_time = 0
         self.reset_cooldown = 0.2
         self.dt = 0.1  # intervalo de tiempo
-        self.max_speed = 40.0  # velocidad máxima
+        self.max_speed = 20.0  # velocidad máxima
         self.Tam = 300.0  # tamaño del entorno
 
         self.misil_pos = np.random.uniform(0, self.Tam, size=(3,))
 
-        self.missile_speed = 40  # Velocidad del misil (ajustable)
+        self.missile_speed = 25  # Velocidad del misil (ajustable)
         self.missile_turn_rate = 0.2  # Tasa de giro del misil (ajustable)
         self.missile_dir = np.array([1.0, 0.0, 0.0])  # Dirección inicial
         self.dron_pos = np.random.uniform(0, self.Tam, size=(3,))

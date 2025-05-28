@@ -65,12 +65,12 @@ def train_model():
 
     policy_kwargs = dict(
         net_arch=[dict(pi=[256, 256], vf=[256, 256])],
-        activation_fn=torch.nn.ReLU
+        activation_fn=torch.nn.Tanh
     )
 
     model = PPO(
         "MlpPolicy", env, verbose=1, batch_size=64, n_steps=2048,
-        learning_rate=1e-3, gamma=0.99, ent_coef=0.01, gae_lambda=0.95,
+        learning_rate=3e-4, gamma=0.99, ent_coef=0.01, gae_lambda=0.95,
         clip_range=0.2, policy_kwargs=policy_kwargs, device='cpu'
     )
 
