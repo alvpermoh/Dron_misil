@@ -11,9 +11,9 @@ class DroneModel(Node):
     def __init__(self):
         super().__init__('drone_model_node')
         self.last_reset_time = 0
-        self.reset_cooldown = 2.0
+        self.reset_cooldown = 0.2
         self.dt = 0.1  # intervalo de tiempo
-        self.max_speed = 10.0  # velocidad máxima
+        self.max_speed = 25.0  # velocidad máxima
         self.Tam = 300.0  # tamaño del entorno
 
         self.initial_position = np.array([self.Tam / 2, self.Tam / 2, self.Tam / 2], dtype=np.float32)

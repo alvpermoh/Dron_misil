@@ -26,7 +26,7 @@ class DroneEvadeSim(gym.Env):
         self.reset_done = False
         self.dt = 0.1
         self.max_speed = 10  #10
-        self.max_steps = 2000  #700
+        self.max_steps = 1000  #700
         self.Tam = 300.0  # 1000
 
         self.render_mode = render_mode
@@ -52,32 +52,39 @@ class DroneEvadeSim(gym.Env):
         self.acc_pub = self.node.create_publisher(Vector3, '/dron/acceleration', 10)
         self.reset_pub = self.node.create_publisher(Bool, '/dron/reset', 10)
 
+
         # Subscribers
         self.pos_sub_drone = self.node.create_subscription(Vector3, '/dron/position', self.dron_pos_callback, 10)
         self.vel_sub_drone = self.node.create_subscription(Vector3, '/dron/velocity', self.dron_vel_callback, 10)
         self.pos_sub_missile = self.node.create_subscription(Vector3, '/misil/position', self.misil_pos_callback, 10)
         self.dir_sub_missile = self.node.create_subscription(Vector3, '/misil/direction', self.misil_dir_callback, 10)
+        self.reset_misil_done = self.node.create_subscription(Vector3, '/misil/reset_misil', self.misil_reset, 10)
 
+        self.reset_misil_done = False  # Estado de reset del misil
         if self.render_mode=="prueba":
             self.renderer = Advanced3DRenderer()
 
         self.reset(seed=43)
 
 
+    def misil_reset(self, msg):
+        """Callback para el reset del misil"""
+        self.reset_misil_done = True
 
+        self.node.get_logger().info("Misil reseteado y en posición inicial.")
     def dron_pos_callback(self, msg):
         """Callback para la posición del dron """
         self.dron_pos = np.array([msg.x, msg.y, msg.z])
         pos_inicial = np.array([150.0, 150.0, 150.0], dtype=np.float32)
         #self.node.get_logger().info(f"Posicion dron:{self.dron_pos}")
-        if np.allclose(self.dron_pos, pos_inicial, atol=0.01):
+        if np.allclose(self.dron_pos, pos_inicial, atol=3.0):
             self.reset_done = True
-            self.node.get_logger().info("Polluelo en posicion inicial, reset_done activado.")
+            #self.node.get_logger().info("Polluelo en posicion inicial, reset_done activado.")
 
     def misil_pos_callback(self, msg):
         """Callback para la posición del misil (recibida del misil)"""
         self.misil_pos = np.array([msg.x, msg.y, msg.z])
-
+        
     def dron_vel_callback(self, msg):
         """Callback para la velocidad del dron (recibida del misil)"""
         self.dron_vel = np.array([msg.x, msg.y, msg.z])
@@ -90,17 +97,18 @@ class DroneEvadeSim(gym.Env):
 
         self.steps = 0
         obs = self._get_obs()
-
+        self.reset_done = False  # Reiniciar el estado de reset
+        self.reset_misil_done = False
         reset_msg = Bool()
         reset_msg.data = True  # Cambia a False si no quieres activar el reset
 
         # Publicar el mensaje
         self.reset_pub.publish(reset_msg)
-
+        
         
         timeout = 1  # Tiempo máximo de espera para reset_done
         start_time = time.time()
-        while not self.reset_done:
+        while not self.reset_done and not self.reset_misil_done:
             if time.time() - start_time > timeout:
                 print("Timeout esperando reset_done, saliendo del reset.")
                 break
@@ -120,7 +128,7 @@ class DroneEvadeSim(gym.Env):
     def step(self, action):
         self.steps += 1
 
-        action = np.clip(action, -10, 10)
+        action = np.clip(action, -15, 15)
 
         rclpy.spin_once(self.node, timeout_sec=0.01)
 

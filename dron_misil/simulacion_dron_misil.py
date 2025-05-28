@@ -108,14 +108,15 @@ def simulate_model():
             action, _ = model.predict(obs)
             obs, reward, terminated, truncated, _ = env.step(action)
             if terminated:
+                env.node.get_logger().info(f"Me pilla,pos-dron: {env.dron_pos}, misil: {env.misil_pos}")
                 obs, _ = env.reset()
                 pruebas[0] += 1
-                print("Me pilla")
+                #env.node.get_logger().info(f"Me pilla,pos-dron: {env.dron_pos}, misil: {env.misil_pos}")
                 time.sleep(0.2)
             if truncated:
+                env.node.get_logger().info(f"Esquivo,pos-dron: {env.dron_pos}, misil: {env.misil_pos},steps: {env.steps}")
                 obs, _ = env.reset()
                 pruebas[1] += 1
-                print("Esquivo")
                 time.sleep(0.2)
 
 
