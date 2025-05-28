@@ -41,7 +41,7 @@ class DroneModel(Node):
         self.timer = self.create_timer(self.dt, self.update_state)
 
     def acc_callback(self, msg):
-        self.acceleration = np.array([msg.x, msg.y, msg.z], dtype=np.float32)
+        self.acceleration =  np.array([msg.x, msg.y, msg.z], dtype=np.float32)
         
 
          

@@ -60,6 +60,7 @@ class DroneEvadeSim(gym.Env):
 
         if self.render_mode=="prueba":
             self.renderer = Advanced3DRenderer()
+
         self.reset(seed=43)
 
 
@@ -137,7 +138,7 @@ class DroneEvadeSim(gym.Env):
         
         self.misil_pos = np.clip(self.misil_pos, 0, self.Tam)
 
-        terminated = dist < 0.5  # debería ser 5.5 asumiendo orientación correcta
+        terminated = dist < 5.5  # debería ser 5.5 asumiendo orientación correcta
 
         if np.any((self.dron_pos <= 0) | (self.dron_pos >= self.Tam)):
             terminated = True
@@ -168,11 +169,17 @@ class DroneEvadeSim(gym.Env):
         if self.render_mode=="prueba":
             events = pygame.event.get() 
         
+
+
+
+
             # Iterar sobre los eventos para el QUIT
             for event in events:
                 if event.type == QUIT:
                  running = False
             self.renderer.render(self.dron_pos, self.misil_pos,self.misil_dir,events)
+        elif self.render_mode== "Pybullet":
+            self.renderer.render(self.dron_pos, self.misil_pos,self.misil_dir)
         return self._get_obs(), reward, terminated, truncated, {}
 
     def render(self):

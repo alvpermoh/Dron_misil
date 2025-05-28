@@ -6,6 +6,7 @@ from OpenGL.GLU import *
 from OpenGL.GLUT import *
 
 import os
+import numpy as np
 
 # Suprimir advertencias de ALSA
 os.environ['SDL_AUDIODRIVER'] = 'dummy'
@@ -15,8 +16,8 @@ class Advanced3DRenderer:
         pygame.init()
         glutInit()
 
-        self.screen_width = 800
-        self.screen_height = 600
+        self.screen_width = 1920
+        self.screen_height = 1080
         self.screen = pygame.display.set_mode((self.screen_width, self.screen_height), DOUBLEBUF | OPENGL)
         pygame.display.set_caption("Dron y Misil - Parámetros Externos")
 
@@ -44,67 +45,95 @@ class Advanced3DRenderer:
         glTranslatef(x, y, z)
         glScalef(size, size, size)
 
-        glColor3f(1.0, 0.0, 0.0) # Rojo
-        glutSolidTeapot(1.0)
+        # Cuerpo central (rectángulo/cubo achatado)
+        glColor3f(0.2, 0.2, 0.2)  # Gris oscuro
+        glPushMatrix()
+        glScalef(0.5, 0.12, 0.5)
+        glutSolidCube(1.0)
+        glPopMatrix()
 
-        glColor3f(0.5, 0.5, 0.5) # Gris
-        glPushMatrix(); glTranslatef(1.0, 0, 0); glScalef(1.5, 0.2, 0.2); glutSolidCube(1.0); glPopMatrix()
-        glPushMatrix(); glTranslatef(-1.0, 0, 0); glScalef(1.5, 0.2, 0.2); glutSolidCube(1.0); glPopMatrix()
-        glPushMatrix(); glTranslatef(0, 0, 1.0); glScalef(0.2, 0.2, 1.5); glutSolidCube(1.0); glPopMatrix()
-        glPushMatrix(); glTranslatef(0, 0, -1.0); glScalef(0.2, 0.2, 1.5); glutSolidCube(1.0); glPopMatrix()
+        # Brazos en X
+        glColor3f(0.4, 0.4, 0.4)  # Gris medio
+        for angle in [0, 90, 180, 270]:
+            glPushMatrix()
+            glRotatef(angle, 0, 1, 0)
+            glTranslatef(0.4, 0, 0)
+            glScalef(0.8, 0.07, 0.07)
+            glutSolidCube(1.0)
+            glPopMatrix()
 
-        glColor3f(0.1, 0.1, 0.1) # Gris oscuro
-        glPushMatrix(); glTranslatef(1.5, 0.2, 0); glScalef(0.5, 0.05, 0.1); glutSolidCube(1.0); glPopMatrix()
-        glPushMatrix(); glTranslatef(-1.5, 0.2, 0); glScalef(0.5, 0.05, 0.1); glutSolidCube(1.0); glPopMatrix()
-        glPushMatrix(); glTranslatef(0, 0.2, 1.5); glScalef(0.1, 0.05, 0.5); glutSolidCube(1.0); glPopMatrix()
-        glPushMatrix(); glTranslatef(0, 0.2, -1.5); glScalef(0.1, 0.05, 0.5); glutSolidCube(1.0); glPopMatrix()
+        # Rotores (discos)
+        glColor3f(0.05, 0.05, 0.05)  # Casi negro
+        for angle in [0, 90, 180, 270]:
+            glPushMatrix()
+            glRotatef(angle, 0, 1, 0)
+            glTranslatef(0.8, 0.08, 0)
+            glRotatef(90, 1, 0, 0)
+            glutSolidTorus(0.04, 0.13, 16, 24)
+            glPopMatrix()
+
 
         glPopMatrix()
 
     def draw_misil(self, pos, orientation, size=10):
         x, y, z = pos
-        pitch, yaw, roll = orientation
+        # orientation ahora es un vector dirección (dx, dy, dz)
+        if len(orientation) == 3:
+            dir_vec = np.array(orientation, dtype=float)
+            norm = np.linalg.norm(dir_vec)
+            if norm == 0:
+                dir_vec = np.array([0, 1, 0])
+            else:
+                dir_vec = dir_vec / norm
+            # Calcula ángulo y eje para alinear el misil con la dirección
+            # Por defecto el misil apunta a +Y, así que rotamos de [0,1,0] a dir_vec
+            up = np.array([0, 1, 0])
+            axis = np.cross(up, dir_vec)
+            angle = np.arccos(np.clip(np.dot(up, dir_vec), -1.0, 1.0)) * 180.0 / np.pi
+        else:
+            # fallback: usar pitch, yaw, roll
+            pitch, yaw, roll = orientation
+            axis = [0, 0, 1]
+            angle = 0
 
         glPushMatrix()
         glTranslatef(x, y, z)
-
-        glRotatef(roll, 0, 0, 1)
-        glRotatef(yaw, 0, 1, 0)
-        glRotatef(pitch, 1, 0, 0)
-
+        if 'angle' in locals() and np.linalg.norm(axis) > 1e-6 and angle != 0:
+            glRotatef(angle, axis[0], axis[1], axis[2])
+        elif len(orientation) == 3:
+            pass  # ya está alineado
+        else:
+            glRotatef(roll, 0, 0, 1)
+            glRotatef(yaw, 0, 1, 0)
+            glRotatef(pitch, 1, 0, 0)
         glScalef(size, size, size)
 
-        glColor3f(0.0, 1.0, 0.0) # Verde
+        # Cuerpo principal (cilindro)
+        glColor3f(0.5, 0.0, 0.0)  # Rojo oscuro
         glPushMatrix()
         glRotatef(90, 1, 0, 0)
-        glutSolidCylinder(0.2, 1.5, 10, 10)
+        glutSolidCylinder(0.13, 1.2, 20, 20)
         glPopMatrix()
 
-        glColor3f(0.3, 0.3, 0.3) # Gris oscuro
+        # Punta (cono) perfectamente pegada
+        glColor3f(1.0, 0.1, 0.1)  # Rojo intenso
         glPushMatrix()
-        glTranslatef(0, 0.75, 0)
-        glRotatef(90, 1, 0, 0)
-        glutSolidCone(0.2, 0.5, 10, 10)
+        glTranslatef(0, 0, 0)  # extremo del cilindro, con epsilon para evitar z-fighting
+        glRotatef(-90, 1, 0, 0)
+        glutSolidCone(0.13, 0.32, 20, 20)
         glPopMatrix()
-
-        glColor3f(0.1, 0.1, 0.1) # Negro
-        glPushMatrix(); glTranslatef(0.2, -0.2, 0); glScalef(0.05, 0.5, 0.2); glutSolidCube(1.0); glPopMatrix()
-        glPushMatrix(); glTranslatef(-0.2, -0.2, 0); glScalef(0.05, 0.5, 0.2); glutSolidCube(1.0); glPopMatrix()
-        glPushMatrix(); glTranslatef(0, -0.2, 0.2); glScalef(0.2, 0.5, 0.05); glutSolidCube(1.0); glPopMatrix()
-        glPushMatrix(); glTranslatef(0, -0.2, -0.2); glScalef(0.2, 0.5, 0.05); glutSolidCube(1.0); glPopMatrix()
 
         glPopMatrix()
 
-    def draw_ground(self, size=300):
-        """Dibuja un plano de suelo de 300x300 en el plano XZ."""
+    def draw_ground(self, size=3000):
+        """Dibuja un plano de suelo grande y verde en el plano XZ."""
         glPushMatrix()
         # El plano XZ está en el "suelo" en y=0
-        # Definimos las esquinas del cuadrado
-        x_min, z_min = 0, 0
-        x_max, z_max = size, size
+        x_min, z_min = -size//2, -size//2
+        x_max, z_max = size//2, size//2
 
-        # Cambiamos el color a un gris claro para el suelo
-        glColor3f(0.7, 0.7, 0.7)
+        # Cambia el color a verde para el suelo
+        glColor3f(0.1, 0.7, 0.1)
 
         glBegin(GL_QUADS)
         glVertex3f(x_min, 0.0, z_min)
@@ -114,14 +143,15 @@ class Advanced3DRenderer:
         glEnd()
 
         # Opcional: Dibuja una rejilla en el suelo para visualización
-        glColor3f(0.3, 0.3, 0.3) # Gris oscuro para la rejilla
+        glColor3f(0.2, 0.4, 0.2) # Verde más oscuro para la rejilla
         glBegin(GL_LINES)
-        for i in range(0, size + 1, 50): # Líneas cada 50 unidades
-            glVertex3f(i, 0.01, 0) # Pequeña elevación para evitar z-fighting
-            glVertex3f(i, 0.01, size)
-
-            glVertex3f(0, 0.01, i)
-            glVertex3f(size, 0.01, i)
+        step = 50
+        for i in range(x_min, x_max + 1, step):
+            glVertex3f(i, 0.01, z_min)
+            glVertex3f(i, 0.01, z_max)
+        for j in range(z_min, z_max + 1, step):
+            glVertex3f(x_min, 0.01, j)
+            glVertex3f(x_max, 0.01, j)
         glEnd()
 
         glPopMatrix()
@@ -149,7 +179,7 @@ class Advanced3DRenderer:
 
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-        glClearColor(0.0, 0.0, 0.1, 1.0)
+        glClearColor(0.5, 0.8, 1.0, 1.0)  # Celeste
 
         glLoadIdentity()
 
@@ -159,7 +189,7 @@ class Advanced3DRenderer:
         glTranslatef(self.camera_x, self.camera_y, self.camera_z)
 
         # --- Dibuja el suelo primero ---
-        self.draw_ground(300) # Llama a la nueva función para dibujar el suelo
+        self.draw_ground()  # Llama a la nueva función para dibujar el suelo grande
 
         self.draw_dron(dron_pos)
         self.draw_misil(misil_pos, misil_orientation)
@@ -196,7 +226,7 @@ if __name__ == "__main__":
         #current_dron_pos[2] += 1
         #if current_dron_pos[0] > 100: current_dron_pos[0] = -100
         current_misil_orientation[1] += 0.5
-        print("Posición de la camara x,y,x:",renderer.camera_x,renderer.camera_y,renderer.camera_z, "Rotacion de la camara ,x,y",renderer.rotation_x, renderer.rotation_y)
+        print("Posición de la camara x,y,z:",renderer.camera_x,renderer.camera_y,renderer.camera_z, "Rotacion de la camara x,y",renderer.rotation_x, renderer.rotation_y)
 
     pygame.quit()
     quit()

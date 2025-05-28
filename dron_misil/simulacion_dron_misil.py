@@ -2,19 +2,23 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64
 from stable_baselines3 import PPO
-from stable_baselines3.common.callbacks import BaseCallback
+from stable_baselines3.common.callbacks import BaseCallback,EvalCallback
 import time
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.io import savemat
-
 import os
 import sys
+from ament_index_python.packages import get_package_share_directory
 
 current_dir = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(current_dir)
 
+package_share_directory = get_package_share_directory('dron_misil') # Make sure 'dron_misil' is your package name
+
+# Construct the absolute path for where best_model.zip should be saved
+best_model_save_dir = os.path.join(package_share_directory, 'mejores_modelos')
 from entorno import DroneEvadeSim
 
 
@@ -46,6 +50,19 @@ def train_model():
     env = DroneEvadeSim(render_mode=None)
     reward_callback = RewardCallback(schedule=lr_schedule)
 
+    eval_env = DroneEvadeSim(render_mode=None)
+
+
+    eval_callback = EvalCallback(
+        eval_env,
+        best_model_save_path=best_model_save_dir,
+        log_path='./logs_eval/',
+        eval_freq=10_000,
+        deterministic=True,
+        render=False,
+        n_eval_episodes=10
+    )
+
     policy_kwargs = dict(
         net_arch=[dict(pi=[256, 256], vf=[256, 256])],
         activation_fn=torch.nn.ReLU
@@ -57,7 +74,7 @@ def train_model():
         clip_range=0.2, policy_kwargs=policy_kwargs, device='cpu'
     )
 
-    model.learn(total_timesteps=10_000, callback=reward_callback)
+    model.learn(total_timesteps=100_000, callback=[reward_callback,eval_callback])
     model.save("ppo_dron_evade")
 
     savemat("rewards.mat", {"rewards": reward_callback.episode_rewards})
@@ -83,7 +100,7 @@ def simulate_model():
 
     model = PPO.load(model_path)
 
-    for _ in range(1):
+    for _ in range(2):
         obs, _ = env.reset()
         pruebas = [0, 0]
 
@@ -107,6 +124,15 @@ def simulate_model():
 
         porcentaje = 100 * pruebas[1] / (pruebas[0] + pruebas[1])
         print(f"Simulation result: {porcentaje}%")
+        package_share_directory = get_package_share_directory('dron_misil')
+
+        # Construye la ruta completa al archivo zip
+        # Esto se resolverá a /home/student/AdR/mi_ws/install/dron_misil/share/dron_misil/mejores_modelos/best_model.zip
+        model_full_path = os.path.join(package_share_directory, 'mejores_modelos', 'best_model.zip')
+
+        print(f"Intentando cargar el modelo desde: {model_full_path}")
+        
+        model = PPO.load(model_full_path)
 
     env.close()
 
